@@ -8,43 +8,26 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
 import { TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 const MFA = ()=>{
 
 
     const [open, setOpen] = React.useState(false);
-    const [fullWidth, setFullWidth] = React.useState(true);
-    const [maxWidth, setMaxWidth] = React.useState('sm');
+    const [otp, setOtp] = React.useState();
   
-    const handleClickOpen = () => {
-      setOpen(true);
+    const handleLogin = () => {
+      console.log(otp)
     };
   
     const handleClose = () => {
       setOpen(false);
     };
-  
-    const handleMaxWidthChange = (event) => {
-      setMaxWidth(
-        // @ts-expect-error autofill of arbitrary value is not handled.
-        event.target.value,
-      );
-    };
-  
-    const handleFullWidthChange = (event) => {
-      setFullWidth(event.target.checked);
-    };
+
 
  return <>
    <React.Fragment>
        <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
         open={true}
         onClose={handleClose}
       >
@@ -66,12 +49,35 @@ const MFA = ()=>{
             <FormControl sx={{ mt: 2, minWidth: 120 }}>
               {/* <InputLabel htmlFor="max-width">OTP</InputLabel> */}
              
-               <TextField variant="outlined" type="number"></TextField>
+               <TextField variant="outlined" type="number" sx={{
+                "input::-webkit-inner-spin-button": {
+                  "-webkit-appearance": "none",
+                  margin: 0
+                },
+                "input::-webkit-outer-spin-button": {
+                  "-webkit-appearance": "none",
+                  margin: 0
+                }
+                
+               }}
+               value={otp}
+               onChange={(e)=>setOtp(e.target.value)}
+               ></TextField>
             </FormControl>
           </Box>
         </DialogContent>
         <DialogActions sx={{alignSelf:"center"}}>
-          <Button variant="contained" onClick={handleClose}>Verify</Button>
+          <Link
+           style={{minWidth:'115px'}}
+              onClick={handleLogin}
+              to={"/mfa"}
+              className="w-full mt-3 bg-gray-300 font-sans
+               hover:bg-red-500 mb-2
+               text-lg py-2 rounded shadow text-white outline-none 
+               focus:outline-none ease-linear transition-all duration-150"
+                type="button">
+                        Log In
+              </Link>
         </DialogActions>
       </Dialog>
     </React.Fragment>
