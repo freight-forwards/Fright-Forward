@@ -39,7 +39,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch db.json --port 5000"
+    "server": "json-server --watch db.json --port 5000",
+    "deploy": "craco build && firebase deploy"
   },
   "eslintConfig": {
     "extends": [
