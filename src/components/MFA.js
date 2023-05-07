@@ -17,7 +17,7 @@ const MFA = ()=>{
     const [otp, setOtp] = React.useState();
   
     const handleLogin = () => {
-      console.log(otp)
+      localStorage.setItem("logIn",true)
     };
   
     const handleClose = () => {
@@ -31,7 +31,7 @@ const MFA = ()=>{
         open={true}
         onClose={handleClose}
       >
-        <DialogTitle>Enter OTP</DialogTitle>
+        <DialogTitle>Enter OTP For MultiFactor Authantication</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Please Verify Your Phone Number to Proceed Further
@@ -70,7 +70,7 @@ const MFA = ()=>{
           <Link
            style={{minWidth:'115px'}}
               onClick={handleLogin}
-              to={"/mfa"}
+              to={otp=="098789"?"/map":null}
               className="w-full mt-3 bg-gray-300 font-sans
                hover:bg-red-500 mb-2
                text-lg py-2 rounded shadow text-white outline-none 

@@ -1,0 +1,23 @@
+.center{
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+  }
+  .kh1{
+    font-weight: bold;
+    font-size: 70px
+  }
+  .kh2{
+    font-size: 26px;
+    text-align: center;
+  }
+ .kimg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    height: 360px;
+}

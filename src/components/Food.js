@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import "./Food.css";
+import DeliveryaPart from "./Partnerdel";
+import { Dialog } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Food = ({ filters }) => {
   const [resDetail, setResDetail] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
+  const [showassign, setShowassign] = useState(false);
+  const [showrider, setShowRider] = useState(false);
+  const navigate = useNavigate();
+
+  
+
 
   const fetchURL =
     "https://raw.githubusercontent.com/euhidaman/Fake_APIs/main/restaurant_details.json";
@@ -12,6 +21,33 @@ const Food = ({ filters }) => {
   useEffect(() => {
     getAllResDetails();
   }, []);
+
+  const handleClick = () => {
+    setShowassign(true)
+    axios
+      .post("https://learning.freightforward.live/api/findDelivery")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setTimeout(() => {
+     
+      setShowRider(true)
+
+      
+
+      setTimeout(() => {
+      
+        setShowassign(false)
+        navigate("/map")
+
+      }, 5000);
+     
+    }, 10000);
+  }
+
 
   useEffect(() => {
     setFilteredRes(
@@ -25,19 +61,21 @@ const Food = ({ filters }) => {
       .then((res) => {
         const allDetails = res.data.foodDetails;
         setResDetail(allDetails);
+        console.log(allDetails)
       })
       .catch((err) => {
         console.log(err);
       });
   };
+ 
 
   return (
     <>
-      <div className="text-gray-400  body-font">
+      {!showassign?<div className="text-gray-400  body-font">
         <div className="container food-body px-10 py-10 md:mx-auto">
           <div className="flex flex-wrap md:-m-4 md:pl-6 foods-container">
-            {filteredRes.map((food, index) => (
-              <div
+            {filteredRes.map((food, index) => (   <button
+                onClick={()=>{handleClick(food)}}
                 key={index}
                 className="w-full mb-4 p-2 lg:w-1/4 md:w-1/2 transform transition duration-200 rounded-lg hover:scale-105 hover:shadow-lg food-container"
               >
@@ -68,7 +106,7 @@ const Food = ({ filters }) => {
                       </h3>
                     </div>
                     <div className="w-full">
-                      <div 
+                      <div  onClick={()=>handleClick()}
                       className="flex justify-between py-1 mb-3 hotel-type-price-container">
                         <p className="text-gray-400 text-left text-sm">{food.hotelType}</p>
                         <h3 className="text-gray-400 text-right text-sm">{food.price}</h3>
@@ -76,11 +114,11 @@ const Food = ({ filters }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))};
           </div>
         </div>
-      </div>
+      </div>: <Dialog fullWidth open={showassign}><DeliveryaPart show = {showrider}/></Dialog>}
     </>
   );
 };

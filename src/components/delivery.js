@@ -17,7 +17,7 @@ const DeliveryMap=()=> {
 
     return (
       <div>
-         <TwoWheelerIcon className='blink' sx={{position:"absolute",fontSize:"81px",top:"564px",left:"207px"}}/>
+         <TwoWheelerIcon  sx={{position:"absolute",fontSize:"81px",top:"564px",left:"207px"}}/>
          <BackHandIcon className='blink' sx={{position:"absolute",fontSize:"20px",top:"401px",left:"145px"}}/>
          <BackHandIcon className='blink' sx={{position:"absolute",fontSize:"20px",top:"413px",left:"460px"}}/>
          <BackHandIcon className='blink' sx={{position:"absolute",fontSize:"20px",top:"244px",left:"430px"}}/>
