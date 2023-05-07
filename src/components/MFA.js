@@ -70,7 +70,7 @@ const MFA = ()=>{
           <Link
            style={{minWidth:'115px'}}
               onClick={handleLogin}
-              to={otp=="098789"?"/map":null}
+              to={otp=="098789"?"/":null}
               className="w-full mt-3 bg-gray-300 font-sans
                hover:bg-red-500 mb-2
                text-lg py-2 rounded shadow text-white outline-none 

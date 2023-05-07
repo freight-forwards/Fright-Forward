@@ -43,9 +43,9 @@ const Food = ({ filters }) => {
         setShowassign(false)
         navigate("/map")
 
-      }, 1000);
+      }, 10000);
      
-    }, 2000);
+    }, 5000);
   }
 
 

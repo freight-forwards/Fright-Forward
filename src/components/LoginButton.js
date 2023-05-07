@@ -13,6 +13,7 @@ export default function Modal() {
     const [password, setPassword] = useState('');
     const [spassword, setSPassword] = useState('');
     const [step, setStep] = useState(1);
+    const [logIn, setLoggedIn] = useState(false);
 
     const handleSignUp = () =>{
         localStorage.setItem("email",email)
@@ -29,7 +30,7 @@ export default function Modal() {
         })
 
     }
-    const handleLogIn = () =>{
+    const handleLogIn = async () =>{
 
        
         if(input==='')
@@ -43,6 +44,8 @@ export default function Modal() {
           const data =  axios.post("https://api.freightforward.live/api/verify/",body).then((res)=>{
             console.log(res)
           })
+          
+          setLoggedIn(true);
 
           setStep(2);
         }
@@ -53,17 +56,18 @@ export default function Modal() {
         const body = {
              "Number" : input,
         }
-        axios.post("https://api.freightforward.live/api/login",body).then((res)=>{
+      await  axios.post("https://api.freightforward.live/api/login",body).then((res)=>{
             console.log(res);
         })
     }
 
     }
-    // useEffect(()=>{
-    //     setTimeout(() => {
-    //        localStorage.getItem("logIn")===true?null:setShowModal(true);
-    //     }, 4000);
-    // })
+    useEffect(()=>{
+        console.log(localStorage.getItem("logIn")===null)
+        setTimeout(() => {
+           localStorage.getItem("logIn")===null?setShowModal(true):null;
+        }, 4000);
+    },[])
     return (
         <>
             <button

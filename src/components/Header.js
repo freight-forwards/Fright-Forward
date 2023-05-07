@@ -12,6 +12,7 @@ function classNames(...classes) {
 }
 
 const Header = (props) => {
+  console.log(localStorage.getItem("logIn")==="true")
   const [location, setLocation] = props.functions;
   const { setQuery, searchQuery } = props;
   return (
@@ -188,10 +189,10 @@ const Header = (props) => {
       </div>
     </div>
 
-      <div className="lg:inline-flex hidden">
+      { !(localStorage.getItem("logIn")==="true") && <div className="lg:inline-flex hidden">
         <LoginButton />
         <SignUpButton />
-      </div>
+      </div>}
       
       <div className="lg:hidden navbar">
         <Navbar />

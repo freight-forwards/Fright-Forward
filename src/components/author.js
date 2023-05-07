@@ -1,10 +1,13 @@
 import "./author.css"
+import auth1 from "./author1.jpg"
+import auth2 from "./author2.jpg"
+import auth3 from "./author3.jpg"
 const Author = () => {
     return  <div>
       <div class="testimonial-container">
       <div class="testimonial">
         <div class="testimonial-image">
-          <img src="author1.jpg" alt="Author 1"/>
+          <img src={auth1} alt="Author 1"/>
         </div>
         <div class="testimonial-text">
         
@@ -14,7 +17,7 @@ const Author = () => {
       </div>
       <div class="testimonial">
         <div class="testimonial-image">
-          <img src="author2.jpg" alt="Author 2"/>
+          <img src={auth2} alt="Author 2"/>
         </div>
         <div class="testimonial-text">
           
@@ -24,7 +27,7 @@ const Author = () => {
       </div>
       <div class="testimonial">
         <div class="testimonial-image">
-          <img src="author3.jpg" alt="Author 3"/>
+          <img src={auth3} alt="Author 3"/>
         </div>
         <div class="testimonial-text">
           
