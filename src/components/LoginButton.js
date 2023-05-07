@@ -11,15 +11,17 @@ export default function Modal() {
     const [phoneNo, setPhoneNumber] = useState('');
     const [input, setInput] = useState('');
     const [password, setPassword] = useState('');
+    const [spassword, setSPassword] = useState('');
     const [step, setStep] = useState(1);
 
     const handleSignUp = () =>{
-        
+        localStorage.setItem("email",email)
+        localStorage.setItem("number",phoneNo)
         const body = {
             "Name" : name,
              "Email" : email,
              "Number" : phoneNo,
-             "Password": password,
+             "Password": spassword,
         }
 
         axios.post("https://api.freightforward.live/api/signup",body).then((res)=>{
@@ -32,7 +34,7 @@ export default function Modal() {
        
         if(input==='')
         {
-            
+            localStorage.setItem("email",email)
             const body = {
                  "Email" : email,
                  "Password" : password,
@@ -46,6 +48,8 @@ export default function Modal() {
         }
         else
         {
+            
+        localStorage.setItem("number",input)
         const body = {
              "Number" : input,
         }
@@ -190,7 +194,10 @@ export default function Modal() {
                                         type="tel" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}
                                     />
                                     <input className="w-full h-11 mt-4 text-left text-lg px-4 border border-gray-300 focus:outline-none rounded-md focus:border-8 focus:border-green-800 "
-                                        type="tel" placeholder="Mobile No." value={phoneNo} onChange={event => setPhoneNumber(event.target.value)}
+                                         placeholder="Mobile No." value={phoneNo} onChange={event => setPhoneNumber(event.target.value)}
+                                    />
+                                    <input className="w-full h-11 mt-4 text-left text-lg px-4 border border-gray-300 focus:outline-none rounded-md focus:border-8 focus:border-green-800 "
+                                        type="password" placeholder="Password" value={spassword} onChange={event => setSPassword(event.target.value)}
                                     />
 
                                     <div className="mt-4 py-4 space-y-4">

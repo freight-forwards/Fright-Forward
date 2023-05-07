@@ -6,7 +6,7 @@ const DeliveryaPart = (props) => {
   return (
     <div className="center" >
       <h1 className="kh1">Please wait.... </h1>
-      <h2 className="kh2">{!show?'we are assigning the rider...':'we are assigning dinesh rathod as your delivey partner'}</h2>
+      <h2 className="kh2">{!show?'we are assigning the rider...':'Delivery Boy Dinesh has accepted for delivery...'}</h2>
       <img
        className="king"
         src="https://media.tenor.com/C7KormPGIwQAAAAi/epic-loading.gif"
