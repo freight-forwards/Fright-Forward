@@ -65,7 +65,7 @@ export default function Modal() {
     useEffect(()=>{
         console.log(localStorage.getItem("logIn")===null)
         setTimeout(() => {
-           localStorage.getItem("logIn")===null?setShowModal(true):null;
+           if(localStorage.getItem("logIn")===null)setShowModal(true);
         }, 4000);
     },[])
     return (
