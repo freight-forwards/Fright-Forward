@@ -24,7 +24,7 @@ export default function Modal() {
              "Number" : phoneNo,
              "Password": spassword,
         }
-
+if(name.length>3 && email.length>3 && phoneNo.length>3 && spassword.length>3 && email.includes("@"))
         axios.post("https://api.freightforward.live/api/signup",body).then((res)=>{
             console.log(res);
         })
@@ -32,8 +32,8 @@ export default function Modal() {
     }
     const handleLogIn = async () =>{
 
-       
-        if(input==='')
+        
+        if(input==='' && email.length>5 && password.length>5 && email.includes("@"))
         {
             localStorage.setItem("email",email)
             const body = {
@@ -56,7 +56,7 @@ export default function Modal() {
         const body = {
              "Number" : input,
         }
-      await  axios.post("https://api.freightforward.live/api/login",body).then((res)=>{
+         await  axios.post("https://api.freightforward.live/api/login",body).then((res)=>{
             console.log(res);
         })
     }
@@ -111,7 +111,7 @@ export default function Modal() {
                                     />}
                                     <Link
                                       onClick={handleLogIn}
-                                        to={step===2?"/mfa":null}
+                                        to={step===2 && input.length===10?"/mfa":null}
                                         className="w-full mt-3 bg-gray-300 font-sans
                                         hover:bg-red-500 mb-2
                                         text-lg py-2 rounded shadow text-white outline-none 
